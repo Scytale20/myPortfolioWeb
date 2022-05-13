@@ -1,0 +1,19 @@
+.section-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.section-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-editar{
+    display: flex;
+    flex-direction: column;
+    
+    
+}

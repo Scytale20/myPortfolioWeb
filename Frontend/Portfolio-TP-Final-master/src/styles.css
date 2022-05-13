@@ -1,0 +1,26 @@
+/*body{
+    background-color: #ffffff;
+    background-image: linear-gradient(#ffffff 0%, #d7e1ec 74%);
+}*/
+
+
+.section-border{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: whitesmoke;
+}
+
+.fa-button,.fa {
+    color: rgb(0, 128, 191);
+    display: block;
+    height: 2.4rem;
+    width: 2.4rem;
+    line-height: 2.4rem;    
+    text-align: center;
+    border-radius: 50%;
+    
+    
+}
+.fa-button:hover,.fa:hover {    
+    background-image: linear-gradient(#ffffff 0%, #d7e1ec 74%);
+    
+}

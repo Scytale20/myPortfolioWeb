@@ -1,0 +1,65 @@
+<div id="infoPersonal">
+  <!---------------------------------Modal------------------------------>
+  <div
+    class="modal fade"
+    id="infoForm"
+    tabindex="-1"
+    aria-labelledby="proyectoFormLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="infoFormLabel">Info Personal</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="id" formControlName="id" />
+
+            <div class="mb-3">
+              <label for="info" class="form-label"></label>                            
+              <textarea class="form-control" formControlName="info" rows="10" placeholder="Ingrese nueva Info"></textarea>
+            </div>
+            
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------------------Modalend----------------------------->
+
+  <div class="container">
+    <div class="section-title">
+      <h2>Acerca de mi</h2>
+      <button
+        class="btn btn-plus mx-5"
+        data-bs-toggle="modal"
+        data-bs-target="#infoForm"
+      >
+        <i class="fa fa-pen"></i>
+      </button>
+    </div>
+    <p>
+      {{ acerca_de }}
+    </p>
+  </div>
+</div>

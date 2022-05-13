@@ -1,0 +1,66 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="mx-5 my-5 g-5 align-items-center">
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input
+            placeholder="Ingrese su Email"
+            type="email"
+            formControlName="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            [ngClass]="{
+              'is-invalid': Email?.errors && Email?.touched,
+              'is-valid': !Email?.errors && Email?.touched
+            }"
+          />
+          <div *ngIf="Email?.errors && Email?.touched">
+            <p *ngIf="Email?.hasError('required')" class="text-danger">
+              El email es un campo requerido
+            </p>
+            <p *ngIf="Email?.hasError('email')" class="text-danger">
+              No es un formato de email valido
+            </p>
+          </div>
+          <div id="emailHelp" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            placeholder="Ingrese su Password"
+            type="password"
+            formControlName="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            [ngClass]="{
+              'is-invalid': Password?.errors && Password?.touched,
+              'is-valid': !Password?.errors && Password?.touched
+            }"
+          />
+          <div *ngIf="Password?.errors && Password?.touched">
+            <p *ngIf="Password?.hasError('required')" class="text-danger">
+              El password es un campo requerido
+            </p>
+            <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+              la contraseña debe tener 6 o mas caracteres
+            </p>
+          </div>
+        </div>
+
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+          Enviar
+        </button>
+      </div>
+      <aside class="col-6">
+        <p class="aling-item-center">Random pic just for fun</p>
+        <img
+          src="https://picsum.photos/2000/?grayscale"
+          alt="Ups.. aca falta una random Pic"
+          class="img-fluid"
+        />
+      </aside>
+    </div>
+  </form>
+</div>

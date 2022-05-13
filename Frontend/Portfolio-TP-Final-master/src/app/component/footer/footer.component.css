@@ -1,0 +1,10 @@
+.bi {
+    font-size: 25px;
+    display: flex;
+    fill: white;
+    margin: 10px;
+  }
+
+.bi:hover{
+  fill: black;  
+}

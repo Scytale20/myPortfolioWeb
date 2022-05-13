@@ -1,0 +1,46 @@
+.navbar{
+  background-color: #e3f2fd;
+}
+
+.bi {
+  font-size: 32px;
+  display: flex;
+  fill: black;
+  margin: 10px;
+}
+
+#pic {
+  width: 120px;
+  height: auto;
+  position: relative;
+  margin-top: -60px;
+  bottom: 15px;
+  left: 10px;
+  z-index: 1;
+  border: 7px solid #fefefe;
+  border-radius: 50%;  
+}
+
+#pic:hover{
+  box-shadow: 0 5px 5px rgb(0 0 0 / 0.2);
+  
+}
+
+/* Celu*/
+@media (max-width: 632px) { 
+  .navbar {
+    flex-direction: column;
+  }
+
+  #redes {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .container{    
+    text-align: center;
+    
+  }
+
+  /* #banner =  hacerlo responsive*/
+}

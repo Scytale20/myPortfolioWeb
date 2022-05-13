@@ -1,0 +1,111 @@
+<div id="proyectos">
+  <!---------------------------------Modal------------------------------>
+  <div
+    class="modal fade"
+    id="proyectoForm"
+    tabindex="-1"
+    aria-labelledby="proyectoFormLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="proyectFormLabel">Proyectos</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="proyectoForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="id" formControlName="id" />
+
+            <div class="row mb-3">
+              <label for="proyecto" class="col-sm-2 col-form-label">Proyecto</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="proyecto"
+                  formControlName="proyecto"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="descripcion" class="col-sm-2 col-form-label"
+                >Descripcion</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="descripcion"
+                  formControlName="descripcion"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="img" class="col-sm-2 col-form-label">Imagen</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="img"
+                  formControlName="img"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!--------------------------------Modalend----------------------------->
+
+  <div class="container border section-border my-3">
+    <div class="section-title">
+      <h3 class="mx-5 my-3 section-title">Proyectos Personales</h3>
+      <button class="btn btn-plus mx-5" data-bs-toggle="modal" data-bs-target="#proyectoForm"><i class="fa fa-plus"></i></button>
+    </div>
+    <div class="card-group">
+      <div *ngFor="let proyecto of proyectos_list" class="my-5 mx-2">
+        <div class="btn-editar">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#proyectoForm"><i class="fa fa-pen"></i></button>
+          <button class="btn"><i class="fa fa-trash"></i></button>
+        </div>
+        <div class="card" style="width: 15rem">
+          <a href="#">
+            <img [src]="proyecto.img" class="card-img-top" alt="..." />
+          </a>
+
+          <div class="card-body">
+            <h4 class="card-title">{{ proyecto.proyecto }}</h4>
+
+            <p class="card-text">
+              {{ proyecto.descripcion }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

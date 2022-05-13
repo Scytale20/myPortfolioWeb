@@ -1,0 +1,100 @@
+{
+  "name": "Federico Boainain",
+  "backImage": "https://i.pinimg.com/originals/17/aa/d0/17aad04448a4e5f4ea327e0e8c62be48.jpg",
+  "profImage": "/assets/img/profile.png",
+  "title": "Full Stack developer Jr.",
+  "logo": "https://test.argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1638311812/APLogo-20-20.png",
+  "tituloLogo": "Argentina Programa - #YoProgramo",
+  "acerca_de":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
+  "experiencia": [
+    {
+      "empresa": "Polipetrol S.A.",
+      "task": "task 1",
+      "img": "/assets/img/polipetrol.gif",
+      "start": "2005",
+      "end": "2020"
+    },
+    {
+      "empresa": "Wico Combustibles",
+      "task": "task 1",
+      "img": "/assets/img/wicocombustibles.webp",
+      "start": "2020",
+      "end": "Actual"
+    }
+  ],
+  "educacion": [
+    {
+      "institucion": "Universidad Nacional de Cuyo",
+      "estudios": "estudios1",
+      "img": "/assets/img/UNC.jpg",
+      "start": "Fecha ingreso",
+      "end": "Fecha egreso"
+    },
+    {
+      "institucion": "institucion2",
+      "estudios": "estudios2",
+      "img": "image",
+      "start": "Fecha ingreso",
+      "end": "Fecha egreso"
+    }
+  ],
+  "skills": [
+    {
+      "skill": "Html",
+      "percent": "70",
+      "img": "assets/img/html.png"
+    },
+    {
+      "skill": "CSS",
+      "percent": "50",
+      "img": "assets/img/CSS.png"
+    },
+    {
+      "skill": "Bootstrap",
+      "percent": "30",
+      "img": "assets/img/Bootstrap_logo.png"
+    },
+    {
+      "skill": "Git",
+      "percent": "65",
+      "img": "assets/img/git.png"
+    },
+    {
+      "skill": "JS",
+      "percent": "20",
+      "img": "assets/img/js.png"
+    },
+    {
+      "skill": "TS",
+      "percent": "22",
+      "img": "assets/img/TS.png"
+    },
+    {
+      "skill": "Angular",
+      "percent": "45",
+      "img": "assets/img/angular.png"
+    }
+  ],
+  "proyectos": [
+    {
+      "proyecto": "proyecto 1",
+      "descripcion": "Algo de texto descriptivo para el proyecto 1",
+      "img": "assets/img/project1.jpg"      
+    },
+    {
+      "proyecto": "proyecto 2",
+      "descripcion": "Algo de texto descriptivo para el proyecto 2",
+      "img": "assets/img/project2.jpg"      
+    },
+    {
+      "proyecto": "proyecto 3",
+      "descripcion": "Algo de texto descriptivo para el proyecto 3",
+      "img": "assets/img/project3.jpg"      
+    }
+  ], 
+  "login":{
+    "usuario":"fede@gmail.com",
+    "password":"123456"
+    
+  }  
+}

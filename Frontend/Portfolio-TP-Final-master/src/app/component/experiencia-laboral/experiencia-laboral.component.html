@@ -1,0 +1,162 @@
+<div id="experiencia">
+  <!---------------------------------Modal------------------------------>
+
+  <div
+    class="modal fade"
+    id="experienciaForm"
+    tabindex="-1"
+    aria-labelledby="experienciaFormLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="experienciaFormLabel">
+            Experiencia Laboral
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="id" formControlName="id" />
+
+            <div class="row mb-3">
+              <label for="empresa" class="col-sm-2 col-form-label"
+                >Empresa</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="empresa"
+                  formControlName="empresa"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="task" class="col-sm-2 col-form-label">Tareas</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="task"
+                  formControlName="task"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="img" class="col-sm-2 col-form-label">Imagen</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="img"
+                  formControlName="img"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="fecha_Start" class="col-sm-2 col-form-label"
+                >Fecha Start</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="fecha_Start"
+                  formControlName="fecha_Start"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="fecha_End" class="col-sm-2 col-form-label"
+                >Fecha End</label
+              >
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="fecha_End"
+                  formControlName="fecha_End"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------------------Modalend----------------------------->
+
+  <div class="container border section-border my-3">
+    <div class="section-title">
+      <h3 class="mx-5 my-4">Experiencia</h3>
+      <button
+        class="btn btn-plus mx-5"
+        data-bs-toggle="modal"
+        data-bs-target="#experienciaForm"
+      >
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+    <div *ngFor="let experiencia of experiencia_list" class="row">
+      <div class="col-2 my-3 mx-3 section-img">
+        <a href="#">
+          <img
+            id="logoempresa"
+            [src]="experiencia.img"
+            alt="Logo Empresa"
+            class="img-fluid img-thumbnail"
+          />
+        </a>
+      </div>
+      <div class="col-8">
+        <div class="section-item">
+          <h4>{{ experiencia.empresa }}</h4>
+          <div class="btn-editar">
+            <button
+              class="btn"
+              data-bs-toggle="modal"
+              data-bs-target="#experienciaForm"
+            >
+              <i class="fa fa-pen"></i>
+            </button>
+            <button class="btn"><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+        <p>{{ experiencia.task }}</p>
+        <p>
+          <time>{{ experiencia.start }}</time> -
+          <time>{{ experiencia.end }}</time>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+#logoinstitucion{
+    width: 80px;
+    height: auto;    
+    display: flex;
+    justify-content: center;
+    /*background-color: #e3f2fd;*/    
+}
+
+#logoinstitucion:hover{
+    box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
+}
+
+.section-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.section-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title,.btn-plus{
+    display: flex;
+       
+}
+
+.section-title,.tittle{
+    display: flex;
+    
+}
+
+/*Celu*/
+
+@media(max-width: 632px){
+    .row{       
+        flex-direction: column;        
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
