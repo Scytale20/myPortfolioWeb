@@ -67,14 +67,14 @@
             </div>
 
             <div class="row mb-3">
-              <label for="fecha_Start" class="col-sm-2 col-form-label"
+              <label for="fechaStart" class="col-sm-2 col-form-label"
                 >Fecha Start</label
               >
               <div class="col-sm-10">
                 <input
                   type="text"
-                  name="fecha_Start"
-                  formControlName="fecha_Start"
+                  name="fechaStart"
+                  formControlName="fechaStart"
                   class="form-control"
                   required
                 />
@@ -82,14 +82,14 @@
             </div>
 
             <div class="row mb-3">
-              <label for="fecha_End" class="col-sm-2 col-form-label"
+              <label for="fechaEnd" class="col-sm-2 col-form-label"
                 >Fecha End</label
               >
               <div class="col-sm-10">
                 <input
                   type="text"
-                  name="fecha_End"
-                  formControlName="fecha_End"
+                  name="fechaEnd"
+                  formControlName="fechaEnd"
                   class="form-control"
                   required
                 />
@@ -121,17 +121,18 @@
       <button
         class="btn btn-plus mx-5"
         data-bs-toggle="modal"
-        data-bs-target="#experienciaForm"
+        data-bs-target="#experienciaForm" 
+        (click)="nuevaExperiencia()"
       >
         <i class="fa fa-plus"></i>
       </button>
     </div>
-    <div *ngFor="let experiencia of experiencia_list" class="row">
+    <div *ngFor="let experiencia of experiencia_list; let i = index" class="row">
       <div class="col-2 my-3 mx-3 section-img">
         <a href="#">
           <img
             id="logoempresa"
-            [src]="experiencia.img"
+            src="/assets/img/{{ experiencia.img }}"
             alt="Logo Empresa"
             class="img-fluid img-thumbnail"
           />
@@ -145,16 +146,17 @@
               class="btn"
               data-bs-toggle="modal"
               data-bs-target="#experienciaForm"
+              (click)="editarExperiencia(i)"
             >
               <i class="fa fa-pen"></i>
             </button>
-            <button class="btn"><i class="fa fa-trash"></i></button>
+            <button class="btn" (click)="borrarExperiencia(i)"><i class="fa fa-trash"></i></button>
           </div>
         </div>
         <p>{{ experiencia.task }}</p>
         <p>
-          <time>{{ experiencia.start }}</time> -
-          <time>{{ experiencia.end }}</time>
+          <time>{{ experiencia.fechaStart }}</time> -
+          <time>{{ experiencia.fechaEnd }}</time>
         </p>
       </div>
     </div>

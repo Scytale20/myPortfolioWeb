@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 import { DatosService } from 'src/app/servicios/service.service';
+import { Experiencia } from '../../../assets/data/Experiencia'
+ 
 
 @Component({
   selector: 'app-experiencia-laboral',
@@ -10,27 +13,93 @@ import { DatosService } from 'src/app/servicios/service.service';
 
 export class ExperienciaLaboralComponent implements OnInit {
   
-  experiencia_list:any;
+  experiencia_list: Experiencia[] = [];
   experienciaForm:FormGroup;
 
-  constructor(private datosPortfolio: DatosService, private formBuilder:FormBuilder) {
+  constructor(private datosPortfolio: DatosService, private formBuilder:FormBuilder, private experienciaService: ExperienciaService) {
     this.experienciaForm = this.formBuilder.group({
       id:[''],
       empresa:['', [Validators.required]],
       task:['', [Validators.required]],
       img:['', [Validators.required]],
-      fecha_Start:['', [Validators.required]],
-      fecha_End:['', [Validators.required]],
+      fechaStart:['', [Validators.required]],
+      fechaEnd:['', [Validators.required]],
     })
    }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.experiencia_list=data.experiencia
-      
-  });
-  }
+    this.reloadExperiencia();    
+    }
+
+    private reloadExperiencia(){
+      this.experienciaService.obtenerDatosExperiencia().subscribe(
+        (data) => {
+          this.experiencia_list = data;         
+        }
+      )
+    }
+  
+
+
   onSubmit(){
-    console.log(this.experienciaForm.value)
+    let experiencia: Experiencia = this.experienciaForm.value;
+    if(this.experienciaForm.get('id')?.value == ''){
+    this.experienciaService.nuevaExperiencia(experiencia).subscribe(
+      (nuevaExperiencia: Experiencia) => {
+        this.experiencia_list.push(nuevaExperiencia);
+        }      
+      );
+    }else{
+      this.experienciaService.modificarExperiencia(experiencia).subscribe(
+        (modificarExperiencia: Experiencia) => {
+          this.reloadExperiencia();
+        }
+      )
+    }
+    
   }
+
+  private clearForm(){
+    this.experienciaForm.setValue({
+      id:'',
+      empresa:'',
+      task:'',
+      img:'',
+      fechaStart:'',
+      fechaEnd:''
+
+    })
+  }
+
+  nuevaExperiencia(){
+    this.clearForm();
+  }
+
+  private loadForm(experiencia: Experiencia){
+    this.experienciaForm.setValue({
+      id: experiencia.id,
+      empresa: experiencia.empresa,
+      task: experiencia.task,
+      img: experiencia.img,
+      fechaStart: experiencia.fechaStart,
+      fechaEnd: experiencia.fechaEnd,
+    })
+  }
+
+  editarExperiencia(indice: number){
+    let experiencia: Experiencia = this.experiencia_list[indice];
+    this.loadForm(experiencia);
+  }
+
+  borrarExperiencia(indice: number){
+    let experiencia: Experiencia = this.experiencia_list[indice];
+    if (confirm("Seguro desea borrar el registro?!")){
+      this.experienciaService.deleteExperiencia(experiencia.id).subscribe(
+        () => {
+          this.reloadExperiencia();
+        }
+      )
+    }
+  }
+
 }

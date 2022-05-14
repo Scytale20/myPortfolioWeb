@@ -1,8 +1,8 @@
 export interface Experiencia{
-    id: Number;
-    empresa: String;
-    task: String;
-    img: String;
-    fecha_Start: String;
-    fecha_End: String;
+    id: number;
+    empresa: string;
+    task: string;
+    img: string;
+    fechaStart: string;
+    fechaEnd: string;
 }

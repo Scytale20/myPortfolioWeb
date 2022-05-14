@@ -1,10 +1,10 @@
 export interface Educacion{
     id: number;
-    institucion: String;
-    estudios: String;
-    img: String;
-    fechaStart: String;
-    fechaEnd: String;
+    institucion: string;
+    estudios: string;
+    img: string;
+    fechaStart: string;
+    fechaEnd: string;
 
     
 }
