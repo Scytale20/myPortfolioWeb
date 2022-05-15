@@ -1,9 +1,9 @@
 {
   "name": "Federico Boainain",
-  "backImage": "https://i.pinimg.com/originals/17/aa/d0/17aad04448a4e5f4ea327e0e8c62be48.jpg",
+  "backImage": "/assets/img/Banner.jpg", 
   "profImage": "/assets/img/profile.png",
   "title": "Full Stack developer Jr.",
-  "logo": "https://test.argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1638311812/APLogo-20-20.png",
+  "logo": "/assets/img/APLogo-20-20.png",
   "tituloLogo": "Argentina Programa - #YoProgramo",
   "acerca_de":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
   "experiencia": [

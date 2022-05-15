@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { datosUrl } from '../../assets/data/config/config'
-import { Skill } from '../../assets/data/skill'
+import { datosUrl } from '../../assets/data/config/config';
+import { Skill } from '../../assets/data/skill';
 
 @Injectable({
   providedIn: 'root'
