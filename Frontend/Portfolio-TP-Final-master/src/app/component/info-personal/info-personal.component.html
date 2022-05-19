@@ -54,12 +54,13 @@
         class="btn btn-plus mx-5"
         data-bs-toggle="modal"
         data-bs-target="#infoForm"
+        (click)="editarInfo()"
       >
         <i class="fa fa-pen"></i>
       </button>
     </div>
     <p>
-      {{ acerca_de }}
+      {{ acerca_de.info }}
     </p>
   </div>
 </div>

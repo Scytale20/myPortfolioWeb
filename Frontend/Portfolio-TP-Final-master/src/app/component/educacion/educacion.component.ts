@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EducationService} from 'src/app/servicios/education.service';
-import { DatosService } from 'src/app/servicios/service.service';
 import { Educacion } from 'src/assets/data/Educacion';
 
 @Component({
@@ -14,7 +13,7 @@ export class EducacionComponent implements OnInit {
   educacion_list: Educacion[] = []
   educationForm:FormGroup;
   
-  constructor(private datosPortfolio: DatosService, private formbuilder:FormBuilder, private educationService: EducationService ) {
+  constructor(private formbuilder:FormBuilder, private educationService: EducationService ) {
     this.educationForm = this.formbuilder.group({
       id:[''], 
       institucion:['', [Validators.required]],
@@ -38,6 +37,7 @@ export class EducacionComponent implements OnInit {
         this.educacion_list = data;
       }
     )
+    
   }
   
 

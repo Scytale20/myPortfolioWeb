@@ -36,14 +36,14 @@
             </div>
 
             <div class="row mb-3">
-              <label for="backImage" class="col-sm-2 col-form-label"
+              <label for="backImg" class="col-sm-2 col-form-label"
                 >Banner</label
               >
               <div class="col-sm-10">
                 <input
                   type="text"
-                  name="backImage"
-                  formControlName="backImage"
+                  name="backImg"
+                  formControlName="backImg"
                   class="form-control"
                   required
                 />
@@ -51,14 +51,14 @@
             </div>
 
             <div class="row mb-3">
-              <label for="profImage" class="col-sm-2 col-form-label"
+              <label for="profImg" class="col-sm-2 col-form-label"
                 >Profile Img</label
               >
               <div class="col-sm-10">
                 <input
                   type="text"
-                  name="profImage"
-                  formControlName="profImage"
+                  name="profImg"
+                  formControlName="profImg"
                   class="form-control"
                   required
                 />
@@ -129,13 +129,13 @@
         <a class="navbar-brand" href="#">
           <img
             class="rounded rounded-3"
-            [src]="dataPortfolio.logo"
+            src="/assets/img/{{headerData.logo}}"
             alt="ArgProgLogo"
             width="60px"
             style="background-color: black"
           />
           <span style="font-size: smaller">
-            {{ dataPortfolio.tituloLogo }}
+            {{ headerData.tituloLogo }}
           </span>
         </a>
       </div>
@@ -217,7 +217,7 @@
     <!--Banner-->
     <div>
       <img
-        [src]="dataPortfolio.backImage"
+        src="/assets/img/{{headerData.backImg}}"
         class="img-fluid"
         id="banner"
         alt="/"
@@ -227,7 +227,7 @@
     <!--Foto-->
     <div class="container">
       <img
-        [src]="dataPortfolio.profImage"
+        src="/assets/img/{{headerData.profImg}}"
         class="img-fluid"
         alt="image"
         id="pic"
@@ -236,6 +236,7 @@
         class="btn btn-editar"
         data-bs-toggle="modal"
         data-bs-target="#headerForm"
+        (click)="editarHeader()"
       >
         <i class="fa fa-pen"></i>
       </button>
@@ -243,8 +244,8 @@
   </div>
   <div class="clearfix container">
     <div style="padding-bottom: 15px">
-      <h3>{{ dataPortfolio.name }}</h3>
-      <h4>{{ dataPortfolio.title }}</h4>
+      <h3>{{ headerData.name }}</h3>
+      <h4>{{ headerData.tittle }}</h4>
     </div>
   </div>
 </div>

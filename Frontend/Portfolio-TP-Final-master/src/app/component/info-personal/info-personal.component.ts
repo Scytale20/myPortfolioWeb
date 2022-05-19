@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DatosService } from 'src/app/servicios/service.service';
+import { HeaderService } from 'src/app/servicios/header.service';
+import { Info } from 'src/assets/data/Info';
 
 @Component({
   selector: 'app-info-personal',
@@ -9,10 +10,10 @@ import { DatosService } from 'src/app/servicios/service.service';
 })
 export class InfoPersonalComponent implements OnInit {
   
-  acerca_de:any;
+  acerca_de:any = []
   infoForm:FormGroup;
 
-  constructor(private datosPortfolio: DatosService, private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private headerService:HeaderService) {
     this.infoForm = this.formBuilder.group({
       id:[''],
       info:['']
@@ -21,13 +22,38 @@ export class InfoPersonalComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data=>{
-      this.acerca_de=data.acerca_de
-    })
+
+    this.reloadInfo()
+    
+  }
+
+  private reloadInfo(){
+    
+    this.headerService.obtenerDataInfo().subscribe(
+      (data) => {
+        this.acerca_de = data[0]
+      }
+    )
   }
 
   onSubmit(){
-    console.log(this.infoForm.value);
+    let info: Info = this.infoForm.value;
+    this.headerService.modificarInfo(info).subscribe(
+      () => {
+        this.reloadInfo();
+      }
+    )    
   }
 
+  private loadForm(info: Info){
+    this.infoForm.setValue({    
+      id:info.id,  
+      info:info.info 
+    })
+  }
+
+  editarInfo(){
+    let info: Info = this.acerca_de
+    this.loadForm(info)    
+  }
 }

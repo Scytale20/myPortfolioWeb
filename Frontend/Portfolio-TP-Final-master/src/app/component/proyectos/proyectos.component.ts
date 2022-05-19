@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProyectService } from 'src/app/servicios/proyect.service';
-import { DatosService } from 'src/app/servicios/service.service';
 import { Proyect } from 'src/assets/data/Proyect';
 
 @Component({
@@ -14,7 +13,7 @@ export class ProyectosComponent implements OnInit {
   proyectos_list: Proyect [] = [];
   proyectoForm:FormGroup;
   
-  constructor(private datosPortfolio: DatosService, private formBuilder: FormBuilder, private proyectService: ProyectService) {
+  constructor(private formBuilder: FormBuilder, private proyectService: ProyectService) {
     this.proyectoForm = this.formBuilder.group({
       id:[''],
       proyectoName:['', [Validators.required]],

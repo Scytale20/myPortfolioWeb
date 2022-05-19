@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DatosService } from 'src/app/servicios/service.service';
+import { HeaderService } from 'src/app/servicios/header.service';
+import { Header } from '../../../assets/data/Header'
 
 
 
@@ -11,16 +12,16 @@ import { DatosService } from 'src/app/servicios/service.service';
 })
 export class HeaderComponent implements OnInit {
   
-  dataPortfolio: any;
+  headerData: any = [] 
   headerForm:FormGroup;
   
 
-  constructor(private datosPortfolio:DatosService, private formbuilder: FormBuilder) {
+  constructor(private formbuilder: FormBuilder, private headerService: HeaderService) {
     this.headerForm = this.formbuilder.group({
       id:[''],
       name:[''],
-      backImage:[''],
-      profImage:[''], 
+      backImg:[''],
+      profImg:[''], 
       tittle:[''],
       logo:[''],
       tituloLogo:[''],
@@ -28,13 +29,43 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data => {
-      this.dataPortfolio=data;
-    })
+    this.reloadHeader();
+  }
+
+  private reloadHeader(){
+    
+    this.headerService.obtenerDataHeader().subscribe(
+      (data) =>{
+        this.headerData = data[0]
+      }
+    )    
   }
 
   onSubmit(){
-    console.log(this.headerForm.value)
+    let header: Header = this.headerForm.value;
+    this.headerService.modificarHeader(header).subscribe(
+      (modHeader: Header) => {
+        this.reloadHeader()
+      }
+    )
   }
+
+  private loadForm(head: Header){
+    this.headerForm.setValue({  
+      id: head.id,    
+      name: head.name,
+      backImg: head.backImg,
+      profImg: head.profImg,
+      tittle: head.tittle,
+      logo: head.logo,
+      tituloLogo: head.tituloLogo,
+    })    
+  }
+
+  editarHeader(){
+    let head: Header = this.headerData
+    this.loadForm(head);    
+  }
+  
 
 }

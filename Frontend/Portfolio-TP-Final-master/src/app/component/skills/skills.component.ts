@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DatosService } from 'src/app/servicios/service.service'; 
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { Skill } from '../../../assets/data/skill'
 
@@ -14,7 +13,7 @@ export class SkillsComponent implements OnInit {
   skills_list: Skill[] = [];
   skillForm:FormGroup;
   
-  constructor(private datosPortfolio: DatosService, private formBuilder:FormBuilder, private skillService: SkillsService) {
+  constructor(private formBuilder:FormBuilder, private skillService: SkillsService) {
     this.skillForm = this.formBuilder.group({
       id:[''],
       skillName:['', [Validators.required]],

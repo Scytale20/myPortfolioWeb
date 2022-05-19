@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
-import { DatosService } from 'src/app/servicios/service.service';
 import { Experiencia } from '../../../assets/data/Experiencia'
  
 
@@ -16,7 +15,7 @@ export class ExperienciaLaboralComponent implements OnInit {
   experiencia_list: Experiencia[] = [];
   experienciaForm:FormGroup;
 
-  constructor(private datosPortfolio: DatosService, private formBuilder:FormBuilder, private experienciaService: ExperienciaService) {
+  constructor(private formBuilder:FormBuilder, private experienciaService: ExperienciaService) {
     this.experienciaForm = this.formBuilder.group({
       id:[''],
       empresa:['', [Validators.required]],
