@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 import { Experiencia } from '../../../assets/data/Experiencia'
  
@@ -14,8 +15,9 @@ export class ExperienciaLaboralComponent implements OnInit {
   
   experiencia_list: Experiencia[] = [];
   experienciaForm:FormGroup;
+  isUserLogged: Boolean = false;
 
-  constructor(private formBuilder:FormBuilder, private experienciaService: ExperienciaService) {
+  constructor(private formBuilder:FormBuilder, private experienciaService: ExperienciaService, private authService: AuthService) {
     this.experienciaForm = this.formBuilder.group({
       id:[''],
       empresa:['', [Validators.required]],
@@ -27,6 +29,7 @@ export class ExperienciaLaboralComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isUserLogged = this.authService.isUserLogged();
     this.reloadExperiencia();    
     }
 
@@ -100,5 +103,5 @@ export class ExperienciaLaboralComponent implements OnInit {
       )
     }
   }
-
+  
 }

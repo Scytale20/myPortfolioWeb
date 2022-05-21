@@ -87,7 +87,7 @@
     <div class="row border section-border">
       <div class="section-title">
         <h3 class="mx-5 my-4">Hard & Soft Skills</h3>
-        <button class="btn btn-plus mx-5" data-bs-toggle="modal" data-bs-target="#skillForm" (click)="nuevaSkill()"><i class="fa fa-plus"></i></button>
+        <button class="btn btn-plus mx-5" data-bs-toggle="modal" data-bs-target="#skillForm" (click)="nuevaSkill()" *ngIf="isUserLogged"><i class="fa fa-plus"></i></button>
       </div>
       <div
         *ngFor="let skill of skills_list; let i = index"
@@ -110,8 +110,8 @@
           [animationDuration]="800"
         ></circle-progress>
         <div class="btn-editar">
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#skillForm" (click)="editarSkill(i)"><i class="fa fa-pen"></i></button>
-          <button class="btn" (click)="borrarSkill(i)"><i class="fa fa-trash"></i></button>
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#skillForm" (click)="editarSkill(i)" *ngIf="isUserLogged"><i class="fa fa-pen"></i></button>
+          <button class="btn" (click)="borrarSkill(i)" *ngIf="isUserLogged"><i class="fa fa-trash"></i></button>
         </div>
       </div>
     </div>

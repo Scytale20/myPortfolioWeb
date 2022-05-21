@@ -129,7 +129,7 @@
         <a class="navbar-brand" href="#">
           <img
             class="rounded rounded-3"
-            src="/assets/img/{{headerData.logo}}"
+            src="/assets/img/{{ headerData.logo }}"
             alt="ArgProgLogo"
             width="60px"
             style="background-color: black"
@@ -203,9 +203,19 @@
             <button
               type="button"
               class="btn btn-outline-dark"
+              *ngIf="!isUserLogged"
               routerLink="/login"
             >
               Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              *ngIf="isUserLogged"
+              routerLink="/logout" 
+              (click)="logout()"
+            >
+              Logout
             </button>
           </div>
         </div>
@@ -217,7 +227,7 @@
     <!--Banner-->
     <div>
       <img
-        src="/assets/img/{{headerData.backImg}}"
+        src="/assets/img/{{ headerData.backImg }}"
         class="img-fluid"
         id="banner"
         alt="/"
@@ -227,7 +237,7 @@
     <!--Foto-->
     <div class="container">
       <img
-        src="/assets/img/{{headerData.profImg}}"
+        src="/assets/img/{{ headerData.profImg }}"
         class="img-fluid"
         alt="image"
         id="pic"
@@ -237,6 +247,7 @@
         data-bs-toggle="modal"
         data-bs-target="#headerForm"
         (click)="editarHeader()"
+        *ngIf="isUserLogged"
       >
         <i class="fa fa-pen"></i>
       </button>

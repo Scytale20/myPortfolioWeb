@@ -123,6 +123,7 @@
         data-bs-toggle="modal"
         data-bs-target="#experienciaForm" 
         (click)="nuevaExperiencia()"
+        *ngIf="isUserLogged"
       >
         <i class="fa fa-plus"></i>
       </button>
@@ -147,10 +148,11 @@
               data-bs-toggle="modal"
               data-bs-target="#experienciaForm"
               (click)="editarExperiencia(i)"
+              *ngIf="isUserLogged"
             >
               <i class="fa fa-pen"></i>
             </button>
-            <button class="btn" (click)="borrarExperiencia(i)"><i class="fa fa-trash"></i></button>
+            <button class="btn" (click)="borrarExperiencia(i)" *ngIf="isUserLogged"><i class="fa fa-trash"></i></button>
           </div>
         </div>
         <p>{{ experiencia.task }}</p>

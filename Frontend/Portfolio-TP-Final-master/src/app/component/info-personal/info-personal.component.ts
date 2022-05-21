@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { HeaderService } from 'src/app/servicios/header.service';
 import { Info } from 'src/assets/data/Info';
 
@@ -12,8 +13,9 @@ export class InfoPersonalComponent implements OnInit {
   
   acerca_de:any = []
   infoForm:FormGroup;
+  isUserLogged: Boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private headerService:HeaderService) {
+  constructor(private formBuilder: FormBuilder, private headerService:HeaderService, private authService: AuthService) {
     this.infoForm = this.formBuilder.group({
       id:[''],
       info:['']
@@ -22,6 +24,7 @@ export class InfoPersonalComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isUserLogged = this.authService.isUserLogged();
 
     this.reloadInfo()
     

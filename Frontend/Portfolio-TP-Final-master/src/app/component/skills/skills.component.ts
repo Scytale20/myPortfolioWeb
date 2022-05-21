@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { Skill } from '../../../assets/data/skill'
 
@@ -12,8 +13,9 @@ export class SkillsComponent implements OnInit {
   
   skills_list: Skill[] = [];
   skillForm:FormGroup;
+  isUserLogged: Boolean = false;
   
-  constructor(private formBuilder:FormBuilder, private skillService: SkillsService) {
+  constructor(private formBuilder:FormBuilder, private skillService: SkillsService, private authService: AuthService) {
     this.skillForm = this.formBuilder.group({
       id:[''],
       skillName:['', [Validators.required]],
@@ -23,6 +25,7 @@ export class SkillsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+      this.isUserLogged = this.authService.isUserLogged();
       this.reloadSkill();    
     }
 

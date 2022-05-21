@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { HeaderService } from 'src/app/servicios/header.service';
 import { Header } from '../../../assets/data/Header'
 
@@ -14,9 +15,10 @@ export class HeaderComponent implements OnInit {
   
   headerData: any = [] 
   headerForm:FormGroup;
+  isUserLogged: Boolean = false;
   
 
-  constructor(private formbuilder: FormBuilder, private headerService: HeaderService) {
+  constructor(private formbuilder: FormBuilder, private headerService: HeaderService, private authService: AuthService) {
     this.headerForm = this.formbuilder.group({
       id:[''],
       name:[''],
@@ -29,6 +31,8 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.isUserLogged = this.authService.isUserLogged();
     this.reloadHeader();
   }
 
@@ -67,5 +71,10 @@ export class HeaderComponent implements OnInit {
     this.loadForm(head);    
   }
   
+  logout(): void{
+    this.authService.logout();
+    this.isUserLogged = false;
+    window.location.reload();  
+  }
 
 }

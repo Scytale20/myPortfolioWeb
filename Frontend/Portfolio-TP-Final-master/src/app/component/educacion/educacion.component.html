@@ -124,6 +124,7 @@
         data-bs-toggle="modal"
         data-bs-target="#educationForm"
         (click)="nuevaEducacion()"
+        *ngIf="isUserLogged"
       >
         <i class="fa fa-plus"></i>
       </button>
@@ -149,10 +150,11 @@
               data-bs-toggle="modal"
               data-bs-target="#educationForm"
               (click)="editarEducacion(i)"
+              *ngIf="isUserLogged"
             >
               <i class="fa fa-pen"></i>
             </button>
-            <button class="btn"><i class="fa fa-trash" (click)="borrarEducacion(i)"></i></button>
+            <button class="btn"><i class="fa fa-trash" (click)="borrarEducacion(i)" *ngIf="isUserLogged"></i></button>
           </div>
         </div>
         <p>{{ edu.estudios }}</p>

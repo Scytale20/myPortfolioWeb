@@ -84,13 +84,13 @@
   <div class="container border section-border my-3">
     <div class="section-title">
       <h3 class="mx-5 my-3 section-title">Proyectos Personales</h3>
-      <button class="btn btn-plus mx-5" data-bs-toggle="modal" data-bs-target="#proyectoForm" (click)="nuevoProyect()"><i class="fa fa-plus"></i></button>
+      <button class="btn btn-plus mx-5" data-bs-toggle="modal" data-bs-target="#proyectoForm" (click)="nuevoProyect()" *ngIf="isUserLogged"><i class="fa fa-plus"></i></button>
     </div>
     <div class="card-group">
       <div *ngFor="let proyecto of proyectos_list; let i = index" class="my-5 mx-2">
         <div class="btn-editar">
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#proyectoForm" (click)="editProyect(i)"><i class="fa fa-pen"></i></button>
-          <button class="btn" (click)="deleteProyect(i)"><i class="fa fa-trash"></i></button>
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#proyectoForm" (click)="editProyect(i)" *ngIf="isUserLogged"><i class="fa fa-pen"></i></button>
+          <button class="btn" (click)="deleteProyect(i)" *ngIf="isUserLogged"><i class="fa fa-trash"></i></button>
         </div>
         <div class="card" style="width: 15rem">
           <a href="#">

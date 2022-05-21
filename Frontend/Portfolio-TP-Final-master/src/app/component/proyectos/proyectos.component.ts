@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { ProyectService } from 'src/app/servicios/proyect.service';
 import { Proyect } from 'src/assets/data/Proyect';
 
@@ -12,8 +13,9 @@ export class ProyectosComponent implements OnInit {
   
   proyectos_list: Proyect [] = [];
   proyectoForm:FormGroup;
+  isUserLogged: Boolean = false;
   
-  constructor(private formBuilder: FormBuilder, private proyectService: ProyectService) {
+  constructor(private formBuilder: FormBuilder, private proyectService: ProyectService, private authService: AuthService) {
     this.proyectoForm = this.formBuilder.group({
       id:[''],
       proyectoName:['', [Validators.required]],
@@ -23,6 +25,7 @@ export class ProyectosComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isUserLogged = this.authService.isUserLogged();
     this.reloadProyect();
   }
   

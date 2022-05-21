@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { EducationService} from 'src/app/servicios/education.service';
 import { Educacion } from 'src/assets/data/Educacion';
 
@@ -12,8 +13,9 @@ export class EducacionComponent implements OnInit {
   
   educacion_list: Educacion[] = []
   educationForm:FormGroup;
+  isUserLogged: Boolean = false;
   
-  constructor(private formbuilder:FormBuilder, private educationService: EducationService ) {
+  constructor(private formbuilder:FormBuilder, private educationService: EducationService, private aunthService: AuthService ) {
     this.educationForm = this.formbuilder.group({
       id:[''], 
       institucion:['', [Validators.required]],
@@ -26,6 +28,8 @@ export class EducacionComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isUserLogged = this.aunthService.isUserLogged();
+
     this.reloadEducacion();
           
     }    

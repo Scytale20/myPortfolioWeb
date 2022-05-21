@@ -55,6 +55,7 @@
         data-bs-toggle="modal"
         data-bs-target="#infoForm"
         (click)="editarInfo()"
+        *ngIf="isUserLogged"
       >
         <i class="fa fa-pen"></i>
       </button>

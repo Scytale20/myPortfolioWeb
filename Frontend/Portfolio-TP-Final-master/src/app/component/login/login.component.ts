@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
 
   form:FormGroup
+  logginIncorrecto: Boolean = false;
+
   constructor(private formBuilder:FormBuilder, private authService:AuthService, private router:Router) { 
     this.form=this.formBuilder.group(
       {
@@ -28,11 +30,15 @@ export class LoginComponent implements OnInit {
   onSubmit(event:Event){
     event.preventDefault;
     
-    this.authService.login(this.form.value)
-      return console.log(this.form.value)
-    
-      
-    
+    this.authService.login(this.form.value).subscribe(
+      (response: Boolean) => {
+        if(response){
+          this.router.navigate(['/portfolio'])
+        }else{
+          this.logginIncorrecto = true;
+        }        
+      } 
+    )    
   }
 
   get Email(){
@@ -43,4 +49,5 @@ export class LoginComponent implements OnInit {
     return this.form.get('password');
   }
 
+  
 }

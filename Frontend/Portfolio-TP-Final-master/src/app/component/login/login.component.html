@@ -52,6 +52,9 @@
         <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
           Enviar
         </button>
+        <div class="alert alert-danger fade show m-auto" role="alert" *ngIf="logginIncorrecto">
+          Usuario incorrecto, por favor ingresa credenciales validas
+        </div>
       </div>
       <aside class="col-6">
         <p class="aling-item-center">Random pic just for fun</p>
