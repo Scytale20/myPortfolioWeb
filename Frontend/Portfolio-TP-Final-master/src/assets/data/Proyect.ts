@@ -3,4 +3,5 @@ export interface Proyect {
     proyectoName: string,
     descripcion: string,
     img: string,
+    link: string,
 }

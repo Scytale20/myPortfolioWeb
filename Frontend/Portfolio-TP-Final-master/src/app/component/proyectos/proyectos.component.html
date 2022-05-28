@@ -62,6 +62,19 @@
                 />
               </div>
             </div>
+
+            <div class="row mb-3">
+              <label for="link" class="col-sm-2 col-form-label">link</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  name="link"
+                  formControlName="link"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -93,12 +106,12 @@
           <button class="btn" (click)="deleteProyect(i)" *ngIf="isUserLogged"><i class="fa fa-trash"></i></button>
         </div>
         <div class="card" style="width: 15rem">
-          <a href="#">
+          <a href="{{proyecto.link}}">
             <img src="assets/img/{{proyecto.img}}" class="card-img-top" alt="..." />
           </a>
 
           <div class="card-body">
-            <h4 class="card-title">{{ proyecto.proyectoName }}</h4>
+            <a href="{{proyecto.link}}"><h4 class="card-title"><u>{{ proyecto.proyectoName }}</u></h4></a>
 
             <p class="card-text">
               {{ proyecto.descripcion }}

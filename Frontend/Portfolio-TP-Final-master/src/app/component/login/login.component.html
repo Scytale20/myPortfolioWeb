@@ -2,7 +2,14 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="mx-5 my-5 g-5 align-items-center">
     <div class="row">
       <div class="col-6">
-        <div class="mb-3">
+        <h4 class="my-3">Bienvenido!</h4>
+        <h6>Eres admin, por favor ingresa credenciales validas,</h6>
+        <h6>sino, te invito a conocer mi Portfolio, click!</h6>
+        <button  type="button" class="btn btn-outline-success" routerLink="/portfolio">
+          Porfolio
+        </button>
+        <div class="mb-3 my-5">
+          <h4 class="my-3 text-center">Iniciar Sesión</h4>
           <label for="exampleInputEmail1" class="form-label">Email</label>
           <input
             placeholder="Ingrese su Email"
@@ -50,14 +57,16 @@
         </div>
 
         <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
-          Enviar
+          Iniciar Sesión
         </button>
-        <div class="alert alert-danger fade show m-auto" role="alert" *ngIf="logginIncorrecto">
+        
+        <div class="alert alert-danger alert-dismissible fade show my-3" role="alert" *ngIf="logginIncorrecto">
           Usuario incorrecto, por favor ingresa credenciales validas
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>
       <aside class="col-6">
-        <p class="aling-item-center">Random pic just for fun</p>
+        <p class="aling-item-center"></p>
         <img
           src="https://picsum.photos/2000/?grayscale"
           alt="Ups.. aca falta una random Pic"

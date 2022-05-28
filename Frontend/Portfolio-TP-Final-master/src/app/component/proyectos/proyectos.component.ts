@@ -21,6 +21,7 @@ export class ProyectosComponent implements OnInit {
       proyectoName:['', [Validators.required]],
       descripcion:['', [Validators.required]], 
       img:['', [Validators.required]],
+      link:['']
     })
    }
 
@@ -60,6 +61,7 @@ export class ProyectosComponent implements OnInit {
       proyectoName: proyect.proyectoName,
       descripcion: proyect.descripcion,
       img: proyect.img,
+      link:proyect.link,
       
     })
   }
@@ -70,6 +72,7 @@ export class ProyectosComponent implements OnInit {
       proyectoName:'',
       descripcion:'',
       img:'',
+      link:'',
     })
   }
 
