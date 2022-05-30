@@ -23,7 +23,7 @@
           <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
             <input type="hidden" name="id" formControlName="id" />
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="institucion" class="col-sm-2 col-form-label"
                 >Institucion</label
               >
@@ -38,22 +38,16 @@
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="estudios" class="col-sm-2 col-form-label"
                 >Estudios</label
               >
               <div class="col-sm-10">
-                <input
-                  type="text"
-                  name="estudios"
-                  formControlName="estudios"
-                  class="form-control"
-                  required
-                />
+                <textarea formControlName="estudios" class="form-control" rows="5" required></textarea>                
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="img" class="col-sm-2 col-form-label">Imagen</label>
               <div class="col-sm-10">
                 <input
@@ -66,7 +60,7 @@
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="fechaStart" class="col-sm-2 col-form-label"
                 >Fecha Start</label
               >
@@ -81,7 +75,7 @@
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="fechaEnd" class="col-sm-2 col-form-label"
                 >Fecha End</label
               >
@@ -104,7 +98,7 @@
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button [disabled]="educationForm.invalid" type="submit" class="btn btn-primary">
                 Save changes
               </button>
             </div>
@@ -118,7 +112,7 @@
 
   <div class="container border section-border">
     <div class="section-title">
-      <h3 class="mx-5 my-4 tittle">Educación</h3>
+      <h3 class="mx-5 my-4 section-title border-bottom">Educación</h3>
       <button
         class="btn btn-plus mx-5"
         data-bs-toggle="modal"
@@ -157,8 +151,8 @@
             <button class="btn"><i class="fa fa-trash" (click)="borrarEducacion(i)" *ngIf="isUserLogged"></i></button>
           </div>
         </div>
-        <p>{{ edu.estudios }}</p>
-        <p>
+        <p class="mx-3">{{ edu.estudios }}</p>
+        <p class="mx-3 border-bottom">
           <time>{{ edu.fechaStart }}</time> -
           <time>{{ edu.fechaEnd }}</time>
         </p>

@@ -17,6 +17,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { LoginComponent } from './component/login/login.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     HttpClientModule,
     NgCircleProgressModule.forRoot({}),
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

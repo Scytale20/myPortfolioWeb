@@ -30,6 +30,14 @@
   fill: rgb(199, 18, 18);  
 }
 
+h1{
+  font-family: Roboto;
+  font-size: 35px;
+}
+h4{
+  font-family: Roboto;
+}
+
 /* Celu*/
 @media (max-width: 632px) { 
   .navbar {

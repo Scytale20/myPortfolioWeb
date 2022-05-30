@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { SkillsService } from 'src/app/servicios/skills.service';
 import { Skill } from '../../../assets/data/skill'
@@ -15,7 +16,7 @@ export class SkillsComponent implements OnInit {
   skillForm:FormGroup;
   isUserLogged: Boolean = false;
   
-  constructor(private formBuilder:FormBuilder, private skillService: SkillsService, private authService: AuthService) {
+  constructor(private formBuilder:FormBuilder, private skillService: SkillsService, private authService: AuthService, private toast: ToastrService) {
     this.skillForm = this.formBuilder.group({
       id:[''],
       skillName:['', [Validators.required]],
@@ -46,13 +47,15 @@ export class SkillsComponent implements OnInit {
       (nuevaSkill: Skill) => {
         this.skills_list.push(nuevaSkill);
         }
-      )
+      );
+      this.toastCrear();
     }else{
       this.skillService.modificarSkill(skill).subscribe(
-        (modificaSkil: Skill) => {
+        () => {
           this.reloadSkill();
         }
-      )
+      );
+      this.toastModificar();
     }
   }
 
@@ -90,8 +93,29 @@ export class SkillsComponent implements OnInit {
         () => {
           this.reloadSkill();
         }
-      )
+      );
+      this.toastBorrar();
     }
+  }
+
+  toastCrear(){
+    if (this.skillForm.valid){
+      this.toast.success('Skill creada correctamente')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastModificar(){
+    if (this.skillForm.valid){
+      this.toast.success('Skill modificada correctamente!')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastBorrar(){
+    this.toast.warning('Registro borrado correctamente', 'Borrar',{"positionClass": "toast-top-center"})
   }
 
 }

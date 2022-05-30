@@ -2,15 +2,15 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="mx-5 my-5 g-5 align-items-center">
     <div class="row">
       <div class="col-6">
-        <h4 class="my-3">Bienvenido!</h4>
-        <h6>Eres admin, por favor ingresa credenciales validas,</h6>
+        <h4 class="my-3 tittle">¡Bienvenido!</h4>
+        <h6>Eres admin?, por favor ingresa credenciales validas,</h6>
         <h6>sino, te invito a conocer mi Portfolio, click!</h6>
         <button  type="button" class="btn btn-outline-success" routerLink="/portfolio">
           Porfolio
         </button>
         <div class="mb-3 my-5">
-          <h4 class="my-3 text-center">Iniciar Sesión</h4>
-          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <h4 class="my-3 text-center tittle">Iniciar Sesión</h4>
+          <label for="exampleInputEmail1" class="form-label subtittle">Email</label>
           <input
             placeholder="Ingrese su Email"
             type="email"
@@ -34,7 +34,7 @@
           <div id="emailHelp" class="form-text"></div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="exampleInputPassword1" class="form-label subtittle">Password</label>
           <input
             placeholder="Ingrese su Password"
             type="password"
@@ -70,7 +70,7 @@
         <img
           src="https://picsum.photos/2000/?grayscale"
           alt="Ups.. aca falta una random Pic"
-          class="img-fluid"
+          class="img-fluid rounded"
         />
       </aside>
     </div>

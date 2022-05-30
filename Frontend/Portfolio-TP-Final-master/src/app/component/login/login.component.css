@@ -1,4 +1,14 @@
 :host body{
     background-color: #ffffff;
     
+    
+}
+
+.tittle{
+    color: #6a6a6a;
+}
+
+.subtittle{
+    color: #6a6a6a;
+    padding-left: 10px;
 }

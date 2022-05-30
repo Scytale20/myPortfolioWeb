@@ -24,3 +24,37 @@
     background-image: linear-gradient(#ffffff 0%, #d7e1ec 74%);
     
 }
+
+.section-title {
+    font-family:Open Sans;
+    font-size: 32px;
+    
+
+}
+
+.modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;    
+    background: #f6f6f6;
+    
+    
+}
+
+.modal-title{
+    font-size: 27px;
+    font-family: Roboto;
+    
+}
+
+.modal-content{    
+    border-radius: 30px;
+    padding: 15px 15px 0;
+    background-color: whitesmoke; 
+}
+
+.greens-border-focus .form-control:focus {
+    border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}

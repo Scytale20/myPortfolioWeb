@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { HeaderService } from 'src/app/servicios/header.service';
 import { Info } from 'src/assets/data/Info';
@@ -15,7 +16,7 @@ export class InfoPersonalComponent implements OnInit {
   infoForm:FormGroup;
   isUserLogged: Boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private headerService:HeaderService, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private headerService:HeaderService, private authService: AuthService, private toast: ToastrService) {
     this.infoForm = this.formBuilder.group({
       id:[''],
       info:['']
@@ -45,7 +46,8 @@ export class InfoPersonalComponent implements OnInit {
       () => {
         this.reloadInfo();
       }
-    )    
+    );
+    this.toastModificar();    
   }
 
   private loadForm(info: Info){
@@ -59,4 +61,9 @@ export class InfoPersonalComponent implements OnInit {
     let info: Info = this.acerca_de
     this.loadForm(info)    
   }
+
+  toastModificar(){    
+    this.toast.success('Registro modificado correctamente!')   
+  }
+
 }

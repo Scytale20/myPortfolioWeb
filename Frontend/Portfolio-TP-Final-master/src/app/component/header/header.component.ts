@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { HeaderService } from 'src/app/servicios/header.service';
 import { Header } from '../../../assets/data/Header'
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
   isUserLogged: Boolean = false;
   
 
-  constructor(private formbuilder: FormBuilder, private headerService: HeaderService, private authService: AuthService) {
+  constructor(private formbuilder: FormBuilder, private headerService: HeaderService, private authService: AuthService, private toast: ToastrService) {
     this.headerForm = this.formbuilder.group({
       id:[''],
       name:[''],
@@ -48,10 +49,11 @@ export class HeaderComponent implements OnInit {
   onSubmit(){
     let header: Header = this.headerForm.value;
     this.headerService.modificarHeader(header).subscribe(
-      (modHeader: Header) => {
+      () => {
         this.reloadHeader()
       }
-    )
+    );
+    this.toastModificar();
   }
 
   private loadForm(head: Header){
@@ -76,5 +78,9 @@ export class HeaderComponent implements OnInit {
     this.isUserLogged = false;
     window.location.reload();  
   }
+
+  toastModificar(){    
+      this.toast.success('Registro modificado correctamente!')   
+    }  
 
 }

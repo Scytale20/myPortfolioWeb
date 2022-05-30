@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ProyectService } from 'src/app/servicios/proyect.service';
 import { Proyect } from 'src/assets/data/Proyect';
@@ -15,7 +16,7 @@ export class ProyectosComponent implements OnInit {
   proyectoForm:FormGroup;
   isUserLogged: Boolean = false;
   
-  constructor(private formBuilder: FormBuilder, private proyectService: ProyectService, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private proyectService: ProyectService, private authService: AuthService, private toast: ToastrService) {
     this.proyectoForm = this.formBuilder.group({
       id:[''],
       proyectoName:['', [Validators.required]],
@@ -42,16 +43,18 @@ export class ProyectosComponent implements OnInit {
     let proyect: Proyect = this.proyectoForm.value;
     if(this.proyectoForm.get('id')?.value == ''){
       this.proyectService.nuevoProyect(proyect).subscribe(
-      () => {
-        this.proyectos_list.push(proyect);
+      (nuevoProyect:Proyect) => {
+        this.proyectos_list.push(nuevoProyect);
         }
-      )
+      );
+      this.toastCrear();
     }else{
       this.proyectService.modificarProyect(proyect).subscribe(
         () => {
         this.reloadProyect();
       }
-      )
+      );
+      this.toastModificar();
     }
   }
 
@@ -92,8 +95,29 @@ export class ProyectosComponent implements OnInit {
         () => {
           this.reloadProyect();
         }
-      )
+      );
+      this.toastBorrar();
     }
+  }
+
+  toastCrear(){
+    if (this.proyectoForm.valid){
+      this.toast.success('Proyecto creado correctamente')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastModificar(){
+    if (this.proyectoForm.valid){
+      this.toast.success('Proyecto modificado correctamente!')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastBorrar(){
+    this.toast.warning('Registro borrado correctamente', '',{"positionClass": "toast-top-center"})
   }
   
 

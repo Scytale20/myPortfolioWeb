@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { EducationService} from 'src/app/servicios/education.service';
 import { Educacion } from 'src/assets/data/Educacion';
@@ -15,7 +16,7 @@ export class EducacionComponent implements OnInit {
   educationForm:FormGroup;
   isUserLogged: Boolean = false;
   
-  constructor(private formbuilder:FormBuilder, private educationService: EducationService, private aunthService: AuthService ) {
+  constructor(private formbuilder:FormBuilder, private educationService: EducationService, private aunthService: AuthService, private toast: ToastrService ) {
     this.educationForm = this.formbuilder.group({
       id:[''], 
       institucion:['', [Validators.required]],
@@ -51,14 +52,17 @@ export class EducacionComponent implements OnInit {
     this.educationService.nuevaEducacion(educacion).subscribe(
       (nuevaEducacion:Educacion) => {
         this.educacion_list.push(nuevaEducacion);
+        
         }      
-      );
+      );      
+      this.toastCrear();
     }else{
       this.educationService.modificaEducacion(educacion).subscribe(
-        (modificaEducacion:Educacion) => {
+        () => {
           this.reloadEducacion()
         }
-      )
+      );
+      this.toastModificar();
     }
   }
 
@@ -103,8 +107,29 @@ export class EducacionComponent implements OnInit {
         () => {
           this.reloadEducacion();
         }
-      )
+      );
+      this.toastBorrar();
     }
+  }
+
+  toastCrear(){
+    if (this.educationForm.valid){
+      this.toast.success('Educacion creada correctamente')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastModificar(){
+    if (this.educationForm.valid){
+      this.toast.success('Educacion modificada correctamente!')
+    }else{
+      this.toast.error('Ups, algo no anduvo bien, revisá!', 'Error')
+    }
+  }
+
+  toastBorrar(){
+    this.toast.warning('El registro de Educacion se ha borrado correctamente', '',{"positionClass": "toast-top-center"})
   }
 
 }

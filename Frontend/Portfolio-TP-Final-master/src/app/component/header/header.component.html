@@ -22,7 +22,7 @@
           <form [formGroup]="headerForm" (ngSubmit)="onSubmit()">
             <input type="hidden" name="id" formControlName="id" />
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="name" class="col-sm-2 col-form-label">Nombre</label>
               <div class="col-sm-10">
                 <input
@@ -35,7 +35,7 @@
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="backImg" class="col-sm-2 col-form-label"
                 >Banner</label
               >
@@ -50,7 +50,7 @@
               </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="profImg" class="col-sm-2 col-form-label"
                 >Profile Img</label
               >
@@ -64,7 +64,7 @@
                 />
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="tittle" class="col-sm-2 col-form-label">Titulo</label>
               <div class="col-sm-10">
                 <input
@@ -76,7 +76,7 @@
                 />
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="logo" class="col-sm-2 col-form-label">Logo</label>
               <div class="col-sm-10">
                 <input
@@ -88,7 +88,7 @@
                 />
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 greens-border-focus">
               <label for="tituloLogo" class="col-sm-2 col-form-label"
                 >Titulo Logo</label
               >
@@ -110,7 +110,7 @@
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button [disabled]="headerForm.invalid" type="submit" class="btn btn-primary">
                 Save changes
               </button>
             </div>
@@ -255,7 +255,7 @@
   </div>
   <div class="clearfix container">
     <div style="padding-bottom: 15px">
-      <h3>{{ headerData.name }}</h3>
+      <h1>{{ headerData.name }}</h1>
       <h4>{{ headerData.tittle }}</h4>
     </div>
   </div>
